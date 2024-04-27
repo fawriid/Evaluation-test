@@ -1,0 +1,27 @@
+.div {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    height: 100vh;
+    position: relative;
+}
+.div h1 {
+    font-size: 80px;
+}
+.div p span {
+  animation: righttoleft 1.2s ease 0s infinite alternate;
+}
+.back_btn{
+    position: absolute;
+    bottom: 50px;
+    left: 50px;
+}
+@keyframes righttoleft {
+    from {
+        padding-left: 50px;
+    }
+    to {
+        padding-left: 0px;
+    }
+}

@@ -1,0 +1,13 @@
+.navbar {
+    padding: 40px 28px;
+    display: flex;
+    justify-content: flex-start;
+    gap: 10px;
+    font-size: larger;
+    background-color: var(--primary-bg-navbar);
+}
+@media (prefers-color-scheme: dark) {
+    .navbar {
+        background-color: var(--secondary-bg-navbar);
+    }
+}

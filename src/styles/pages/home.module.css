@@ -1,0 +1,17 @@
+.content{
+  height: calc(100vh - 150px) ;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  padding: 50px;
+}
+.content_header{
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+.buttonContainer{
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}

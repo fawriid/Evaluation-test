@@ -1,20 +1,40 @@
 :root {
     --max-width: 1100px;
     --border-radius: 12px;
-    --font-mono: ui-monospace, Menlo, Monaco, "Cascadia Mono", "Segoe UI Mono",
-        "Roboto Mono", "Oxygen Mono", "Ubuntu Monospace", "Source Code Pro",
-        "Fira Mono", "Droid Sans Mono", "Courier New", monospace;
-
+    --font-mono: "Courier New", "Cascadia Mono", "Segoe UI Mono", "Roboto Mono",
+        "Oxygen Mono", "Ubuntu Monospace", "Source Code Pro", "Fira Mono",
+        "Droid Sans Mono", monospace;
+    font-family: "Courier New", Courier, monospace;
     --foreground-rgb: 0, 0, 0;
     --background-start-rgb: 214, 219, 220;
     --background-end-rgb: 255, 255, 255;
 
+    /* btn */
     --primary-button-color: #a61e17;
     --secondary-button-color: #eaeaea;
+    --secondary-button-bg-color: #414141;
+
+    /* bg */
     --primary-bg-color: #fff;
     --secondary-bg-color: #282828;
+
+    /* nav */
+    --primary-bg-navbar: #f4f4f4;
+    --secondary-bg-navbar: #222121;
+
+    /* text */
+    --red-text-color: #a61e17;
     --primary-text-color: #4f4e49;
-    --secondary-text-color: #e8e6d3;
+    --secondary-text-color: #ffffff;
+
+    /* base colors */
+    --white-color: #fff;
+    --light-white-color: #eaeaea;
+    --black-color: #000;
+    --light-black-color: #00000060;
+
+    /* mui */
+    --mui-active-blue: #1876d1;
 }
 
 * {
@@ -36,8 +56,6 @@ a {
 }
 
 @media (prefers-color-scheme: dark) {
-    :root {
-    }
     html {
         color-scheme: dark;
     }

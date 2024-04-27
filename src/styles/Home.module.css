@@ -1,14 +1,6 @@
-.main {
-    /* display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    align-items: center;
-    padding: 6rem;
-    min-height: 100vh; */
-    /* background-color: var(--primary-bg-color); */
+.wrapper{
+  padding: 0 40px;
 }
-@media (prefers-color-scheme: dark) {
-    .main {
-        /* background-color: var(--secondary-bg-color); */
-    }
+.wrapper.fullscreen{
+  padding: 0;
 }
