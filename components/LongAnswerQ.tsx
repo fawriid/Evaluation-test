@@ -9,15 +9,17 @@ import {
 } from "@mui/material";
 // import Textarea from "@mui/joy/Textarea";
 import React, { useState } from "react";
-import { QuestionModelType } from "../Types";
+import { QuestionModelType, UserStatusModel } from "../Types";
+import { F } from "../functions";
 
-const LongAnswerQ = ({
-    question,
-    answers,
-    type,
-    correctAnswer,
-    sx,
-}: QuestionModelType) => {
+interface propTypes {
+    data: QuestionModelType;
+    setUserStatus: Function;
+    userStatus: UserStatusModel;
+}
+
+const LongAnswerQ = ({ data, userStatus, setUserStatus }: propTypes) => {
+    const { question, id } = data;
     const [isToggled, setIsToggled] = useState(false);
     return (
         <FormControl>
@@ -35,6 +37,10 @@ const LongAnswerQ = ({
                 onFocus={() => setIsToggled(true)}
                 onBlur={() => setIsToggled(false)}
                 minRows={4}
+                value={userStatus?.answers?.[id]}
+                onChange={(e) =>
+                    F.setAnswerToQuestion(setUserStatus, e.target.value, id)
+                }
                 style={{
                     minWidth: 300,
                     marginBottom: "15px",

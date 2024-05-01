@@ -4,20 +4,23 @@ import { Stepper } from "..";
 
 import { F } from "../../../../../functions/index";
 import QuestionTypePicker from "./QuestionTypePicker";
-import { QuestionModelType } from "../../../../../Types";
+import { QuestionModelType, UserStatusModel } from "../../../../../Types";
 import Button from "../../../../../components/Button";
 import { handleBack, handleNext } from "../../functions";
 import { ButtonType } from "../../../../../Types/_enums";
 
 const Content = () => {
+    const [userStatus, setUserStatus] = useState<UserStatusModel>({});
     const [activeStep, setActiveStep] = useState(0);
+    const questions: QuestionModelType[] = F.questions;
     const handleNextTrigger = () =>
         handleNext(activeStep, setActiveStep, questions.length);
     const handleBackTrigger = () =>
         handleBack(activeStep, setActiveStep, questions.length);
 
-    const questions: QuestionModelType[] = F.questions;
-
+    useEffect(() => {
+        console.log(userStatus);
+    }, [userStatus]);
     return (
         <div className={`${styles.content}`}>
             <div className={styles.content_header}>
@@ -27,7 +30,11 @@ const Content = () => {
             <Stepper activeStep={activeStep} setActiveStep={setActiveStep} />
 
             <div className={styles.question}>
-                <QuestionTypePicker question={questions[activeStep]} />
+                <QuestionTypePicker
+                    userStatus={userStatus}
+                    setUserStatus={setUserStatus}
+                    question={questions[activeStep]}
+                />
             </div>
             <div className={styles.buttonContainer}>
                 <Button

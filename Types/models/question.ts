@@ -2,8 +2,8 @@ import { QuestionType } from "../_enums";
 
 export interface Question {
     question: string;
-    answers: string[] | number[] | "";
-    correctAnswer: string | number | string[] | number[];
+    answers: string | string[] ;
+    correctAnswer: string | string[] ;
     type: QuestionType;
-    sx?: object;
+    id: number;
 }

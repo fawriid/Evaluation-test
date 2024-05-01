@@ -6,16 +6,19 @@ import {
     Radio,
     RadioGroup,
 } from "@mui/material";
-import React from "react";
-import { QuestionModelType } from "../Types";
+import React, { useEffect } from "react";
+import { QuestionModelType, UserStatusModel } from "../Types";
 import { kMaxLength } from "buffer";
+import { F } from "../functions";
 
-const ShortAnswerQ = ({
-    question,
-    answers,
-    type,
-    correctAnswer,
-}: QuestionModelType) => {
+interface propTypes {
+    data: QuestionModelType;
+    setUserStatus: Function;
+    userStatus: UserStatusModel;
+}
+
+const ShortAnswerQ = ({ data, userStatus, setUserStatus }: propTypes) => {
+    const { question, id } = data;
     return (
         <FormControl>
             <FormLabel
@@ -25,6 +28,10 @@ const ShortAnswerQ = ({
             </FormLabel>
             <Input
                 inputProps={{ maxLength: 10 }}
+                onChange={(e) =>
+                    F.setAnswerToQuestion(setUserStatus, e.target.value, id)
+                }
+                value={userStatus?.answers?.[id]}
                 sx={{
                     mb: "15px",
                     "@media(prefers-color-scheme:dark)": { color: "#ffffffcc" },

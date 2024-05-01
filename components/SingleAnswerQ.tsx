@@ -5,15 +5,18 @@ import {
     Radio,
     RadioGroup,
 } from "@mui/material";
-import React from "react";
-import { QuestionModelType } from "../Types";
+import React, { useEffect } from "react";
+import { QuestionModelType, UserStatusModel } from "../Types";
+import { F } from "../functions";
 
-const SingleAnswerQ = ({
-    question,
-    answers,
-    type,
-    correctAnswer,
-}: QuestionModelType) => {
+interface propTypes {
+    data: QuestionModelType;
+    setUserStatus: Function;
+    userStatus: UserStatusModel;
+}
+
+const SingleAnswerQ = ({ data, userStatus, setUserStatus }: propTypes) => {
+    const { question, answers, id } = data;
     return (
         <FormControl>
             <FormLabel
@@ -23,7 +26,11 @@ const SingleAnswerQ = ({
             </FormLabel>
             <RadioGroup
                 aria-labelledby="demo-radio-buttons-group-label"
-                defaultValue=""
+                defaultValue={""}
+                value={userStatus?.answers?.[id]}
+                onChange={(e) =>
+                    F.setAnswerToQuestion(setUserStatus, e.target.value, id)
+                }
                 name="radio-buttons-group">
                 {typeof answers == "object" &&
                     answers.map((answer, index) => (
