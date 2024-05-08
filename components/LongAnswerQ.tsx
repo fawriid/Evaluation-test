@@ -7,7 +7,7 @@ import {
     RadioGroup,
     TextareaAutosize,
 } from "@mui/material";
-// import Textarea from "@mui/joy/Textarea";
+import Textarea from "@mui/joy/Textarea";
 import React, { useState } from "react";
 import { QuestionModelType, UserStatusModel } from "../Types";
 import { F } from "../functions";
@@ -25,9 +25,9 @@ const LongAnswerQ = ({ data, userStatus, setUserStatus }: propTypes) => {
         <FormControl>
             <FormLabel
                 sx={{
-                    color: isToggled ? "#1876D1" : "black",
+                    color: isToggled ? "#a61e17" : "black",
                     "@media(prefers-color-scheme:dark)": {
-                        color: isToggled ? "#1876D1" : "white",
+                        color: isToggled ? "#a61e17" : "white",
                     },
                 }}
                 id="demo-radio-buttons-group-label">
@@ -45,7 +45,7 @@ const LongAnswerQ = ({ data, userStatus, setUserStatus }: propTypes) => {
                     minWidth: 300,
                     marginBottom: "15px",
                     marginTop: "10px",
-                    borderColor: "#00000020",
+                    borderColor: isToggled ? "#a61e17" : "#00000020",
                     borderRadius: "10px",
                     padding: "10px",
                 }}

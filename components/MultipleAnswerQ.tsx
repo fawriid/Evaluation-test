@@ -22,19 +22,17 @@ const MultipleAnswerQ = ({ data, userStatus, setUserStatus }: propTypes) => {
                 event.target.checked &&
                 !userStatus?.answers?.[id]?.includes(event.target.value)
             ) {
-                // Checkbox is checked and value is not already in the array
                 const updatedAnswers = [...(prev?.answers?.[id] || [])];
                 updatedAnswers.push(event.target.value);
 
                 return {
                     ...prev,
                     answers: {
-                        ...prev.answers,
+                        ...prev?.answers,
                         [id]: updatedAnswers,
                     },
                 };
             } else {
-                // Checkbox is unchecked, remove value from the array
                 const updatedAnswers = (prev?.answers?.[id] || []).filter(
                     (val) => val !== event.target.value
                 );
@@ -42,7 +40,7 @@ const MultipleAnswerQ = ({ data, userStatus, setUserStatus }: propTypes) => {
                 return {
                     ...prev,
                     answers: {
-                        ...prev.answers,
+                        ...prev?.answers,
                         [id]: updatedAnswers,
                     },
                 };

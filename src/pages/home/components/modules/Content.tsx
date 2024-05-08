@@ -5,22 +5,32 @@ import { Stepper } from "..";
 import { F } from "../../../../../functions/index";
 import QuestionTypePicker from "./QuestionTypePicker";
 import { QuestionModelType, UserStatusModel } from "../../../../../Types";
-import Button from "../../../../../components/Button";
-import { handleBack, handleNext } from "../../functions";
+import {
+    getFromLocalStorage,
+    handleBack,
+    handleNext,
+    setToLocalStorage,
+} from "../../functions";
 import { ButtonType } from "../../../../../Types/_enums";
+import ButtonComponent from "../../../../../components/ButtonComponent";
 
 const Content = () => {
     const [userStatus, setUserStatus] = useState<UserStatusModel>({});
     const [activeStep, setActiveStep] = useState(0);
     const questions: QuestionModelType[] = F.questions;
-    const handleNextTrigger = () =>
-        handleNext(activeStep, setActiveStep, questions.length);
-    const handleBackTrigger = () =>
-        handleBack(activeStep, setActiveStep, questions.length);
+    const handleNextTrigger = () => {
+        handleNext(activeStep, setActiveStep, questions?.length);
+        setToLocalStorage(userStatus);
+    };
+    const handleBackTrigger = () => {
+        handleBack(activeStep, setActiveStep, questions?.length);
+        setToLocalStorage(userStatus);
+    };
 
     useEffect(() => {
-        console.log(userStatus);
-    }, [userStatus]);
+        setUserStatus(getFromLocalStorage());
+    }, []);
+
     return (
         <div className={`${styles.content}`}>
             <div className={styles.content_header}>
@@ -37,30 +47,30 @@ const Content = () => {
                 />
             </div>
             <div className={styles.buttonContainer}>
-                <Button
+                <ButtonComponent
                     type={ButtonType.secondary}
                     small
                     onClick={handleBackTrigger}>
                     previous
-                </Button>
-                <Button
+                </ButtonComponent>
+                <ButtonComponent
                     type={ButtonType.secondary}
                     small
                     onClick={handleNextTrigger}>
                     next
-                </Button>
-                {questions.length - 1 == activeStep ? (
-                    <Button
+                </ButtonComponent>
+                {questions?.length - 1 == activeStep ? (
+                    <ButtonComponent
                         type={ButtonType.primary}
                         onClick={handleNextTrigger}>
                         Finish Test
-                    </Button>
+                    </ButtonComponent>
                 ) : (
-                    <Button
+                    <ButtonComponent
                         type={ButtonType.primary}
                         onClick={handleNextTrigger}>
                         Submit Answer
-                    </Button>
+                    </ButtonComponent>
                 )}
             </div>
         </div>

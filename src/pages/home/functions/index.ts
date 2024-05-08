@@ -1,3 +1,5 @@
+import { UserStatusModel } from "../../../../Types";
+
 export const handleNext = (
     activeStep: number,
     setActiveStep: Function,
@@ -13,3 +15,12 @@ export const handleBack = (
 ) => {
     activeStep !== 0 && setActiveStep(() => activeStep - 1);
 };
+
+
+export const setToLocalStorage = (userStatus:UserStatusModel) => {
+    localStorage.setItem('userStatus', JSON.stringify(userStatus));
+}
+
+export const getFromLocalStorage = () => {
+    return JSON.parse(localStorage.getItem('userStatus') || '{}') as UserStatusModel;
+}   

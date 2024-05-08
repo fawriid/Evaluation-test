@@ -5,16 +5,13 @@ import { LinkModelType } from "../Types";
 import { LinkType } from "../Types/_enums";
 
 const NextLink = ({ url, replace = false, children, type }: LinkModelType) => {
-    useEffect(() => {
-        console.log(type);
-    }, [type]);
     return (
         <Link
             href={url}
             replace={replace}
             className={`${styles.link} 
-            ${type === LinkType.primary && styles.primary} 
-            ${type === LinkType.secondary && styles.secondary} 
+            ${type ? type === LinkType.primary && styles.primary : ""} 
+            ${type ? type === LinkType.secondary && styles.secondary : ""} 
                 `}>
             {children}
         </Link>

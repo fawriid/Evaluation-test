@@ -9,7 +9,7 @@ export const setAnswerToQuestion = (
         return {
             ...prev,
             answers: {
-                ...prev.answers,
+                ...prev?.answers,
                 [id]: answer,
             },
         };
