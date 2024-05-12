@@ -34,4 +34,4 @@ const Stepper = ({ activeStep, setActiveStep }: propTypes) => {
     );
 };
 
-export { Stepper };
+export default Stepper ;
